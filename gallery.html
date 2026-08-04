@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Prodigy Society</title>
+  <meta name="description" content="Photo gallery of Prodigy Society events, workshops, and campus life at Tilottama Campus.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <div id="loading-screen"><div class="loader"></div><p class="loader-text">Loading…</p></div>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="Logo" width="40" height="40"><span>Prodigy Society</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="board.html">Board</a>
+        <a href="members.html">Members</a><a href="events.html">Events</a><a href="gallery.html" class="active">Gallery</a><a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="board.html">Board</a>
+    <a href="members.html">Members</a><a href="events.html">Events</a><a href="gallery.html" class="active">Gallery</a><a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Memories</span>
+        <h1>Gallery</h1>
+        <p>Moments from our events, workshops, and campus life.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="events">Events</button>
+          <button class="filter-btn" data-filter="workshops">Workshops</button>
+          <button class="filter-btn" data-filter="campus">Campus</button>
+          <button class="filter-btn" data-filter="team">Team</button>
+        </div>
+
+        <div class="gallery-masonry">
+          <div class="gallery-item reveal" data-category="campus">
+            <img src="assets/campus.jpg" alt="Tilottama Campus aerial view with students" loading="lazy">
+            <div class="gallery-overlay"><span>Tilottama Campus</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="events">
+            <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#192028,#4a9a8e55);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">🎉</div>
+            <div class="gallery-overlay"><span>Orientation Day</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="workshops">
+            <div style="aspect-ratio:3/4;background:linear-gradient(135deg,#192028,#72d3c655);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">💻</div>
+            <div class="gallery-overlay"><span>Web Dev Workshop</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="team">
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,#192028,#5b9bd555);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">👥</div>
+            <div class="gallery-overlay"><span>Board Meetup</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="events">
+            <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#192028,#e6a23c55);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">🏆</div>
+            <div class="gallery-overlay"><span>Hackathon Winners</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="workshops">
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,#192028,#4caf7a55);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">🎨</div>
+            <div class="gallery-overlay"><span>Design Sprint</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="campus">
+            <div style="aspect-ratio:4/5;background:linear-gradient(135deg,#192028,#4a9a8e44);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">🏫</div>
+            <div class="gallery-overlay"><span>Campus Life</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="events">
+            <div style="aspect-ratio:3/2;background:linear-gradient(135deg,#192028,#e05c5c55);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">🎤</div>
+            <div class="gallery-overlay"><span>Public Speaking Night</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="team">
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,#192028,#72d3c644);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">🤝</div>
+            <div class="gallery-overlay"><span>Team Building</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="workshops">
+            <div style="aspect-ratio:16/10;background:linear-gradient(135deg,#192028,#5b9bd544);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">⚡</div>
+            <div class="gallery-overlay"><span>Coding Marathon</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="events">
+            <div style="aspect-ratio:1;background:linear-gradient(135deg,#192028,#4a9a8e55);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">🌱</div>
+            <div class="gallery-overlay"><span>Green Drive</span></div>
+          </div>
+          <div class="gallery-item reveal" data-category="campus">
+            <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#192028,#6b7a8d44);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--accent);">📸</div>
+            <div class="gallery-overlay"><span>Club Photoshoot</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <img src="" alt="">
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="logo-row"><img src="assets/logo.png" alt="" width="36" height="36">Prodigy Society</div><p>Tilottama Campus innovation club.</p></div>
+        <div class="footer-links"><h4>Explore</h4><a href="about.html">About</a><a href="board.html">Board</a><a href="events.html">Events</a></div>
+        <div class="footer-links"><h4>More</h4><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></div>
+        <div class="footer-links"><h4>Contact</h4><a href="mailto:drewthecrewttc@gmail.com">drewthecrewttc@gmail.com</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2083 Prodigy Society</span><span>Tilottama Campus</span></div>
+    </div>
+  </footer>
+  <button id="back-to-top" aria-label="Back to top"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 15l7-7 7 7"/></svg></button>
+  <script src="js/main.js"></script>
+</body>
+</html>
