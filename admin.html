@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Prodigy Society</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Admin-specific styles */
+    .admin-login {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-xl);
+    }
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+      padding: var(--space-2xl);
+      background: var(--gradient-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+    }
+    .login-card h1 {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: var(--space-sm);
+    }
+    .login-card .sub {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: var(--space-xl);
+    }
+    .admin-shell {
+      display: none;
+      min-height: 100vh;
+    }
+    .admin-shell.active { display: flex; }
+    .admin-sidebar {
+      width: 260px;
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      padding: var(--space-xl) 0;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .admin-sidebar .brand {
+      padding: 0 var(--space-lg) var(--space-xl);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: 700;
+      font-family: var(--font-display);
+    }
+    .admin-sidebar .brand img { width: 32px; height: 32px; border-radius: 50%; }
+    .admin-nav a {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 0.75rem var(--space-lg);
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all var(--transition-fast);
+      border-left: 3px solid transparent;
+    }
+    .admin-nav a:hover, .admin-nav a.active {
+      color: var(--accent);
+      background: rgba(74,154,142,0.08);
+      border-left-color: var(--accent);
+    }
+    .admin-main {
+      flex: 1;
+      padding: var(--space-2xl);
+      overflow-y: auto;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-2xl);
+    }
+    .admin-header h2 { font-size: 1.5rem; }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-2xl);
+    }
+    .stat-card {
+      padding: var(--space-lg);
+      background: var(--gradient-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .stat-card .label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-card .value { font-size: 1.75rem; font-weight: 700; color: var(--highlight); margin-top: 0.25rem; }
+    .admin-panel { display: none; }
+    .admin-panel.active { display: block; }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    .admin-table th, .admin-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .admin-table th {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .admin-table tr:hover td { background: rgba(74,154,142,0.05); }
+    .btn-danger { background: var(--error); color: #fff; }
+    .btn-danger:hover { opacity: 0.9; color: #fff; }
+    .login-error {
+      display: none;
+      color: var(--error);
+      font-size: 0.875rem;
+      text-align: center;
+      margin-bottom: var(--space-md);
+    }
+    .login-error.show { display: block; }
+    @media (max-width: 768px) {
+      .admin-shell.active { flex-direction: column; }
+      .admin-sidebar { width: 100%; height: auto; position: relative; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Login Screen -->
+  <div class="admin-login" id="admin-login">
+    <div class="login-card">
+      <div style="text-align:center;margin-bottom:var(--space-lg);">
+        <img src="assets/logo.png" alt="" width="56" height="56" style="border-radius:50%;margin:0 auto;">
+      </div>
+      <h1>Admin Access</h1>
+      <p class="sub">Prodigy Society Dashboard</p>
+      <div class="login-error" id="login-error">Invalid credentials. Try again.</div>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="admin-user">Username</label>
+          <input type="text" id="admin-user" required autocomplete="username" placeholder="admin">
+        </div>
+        <div class="form-group">
+          <label for="admin-pass">Password</label>
+          <input type="password" id="admin-pass" required autocomplete="current-password" placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Sign In</button>
+      </form>
+      <p style="text-align:center;margin-top:var(--space-lg);font-size:0.75rem;color:var(--text-muted);">Default: admin / prodigy2083</p>
+    </div>
+  </div>
+
+  <!-- Admin Shell -->
+  <div class="admin-shell" id="admin-shell">
+    <aside class="admin-sidebar">
+      <div class="brand">
+        <img src="assets/logo.png" alt="">
+        Prodigy Admin
+      </div>
+      <nav class="admin-nav">
+        <a href="#" data-panel="dashboard" class="active">📊 Dashboard</a>
+        <a href="#" data-panel="members">👥 Members</a>
+        <a href="#" data-panel="board">🎖️ Board</a>
+        <a href="#" data-panel="events">📅 Events</a>
+        <a href="#" data-panel="gallery">🖼️ Gallery</a>
+        <a href="#" data-panel="announcements">📢 Announcements</a>
+        <a href="#" data-panel="newsletter">✉️ Newsletter</a>
+        <a href="#" data-panel="messages">💬 Messages</a>
+        <a href="#" data-panel="settings">⚙️ Settings</a>
+        <a href="#" id="admin-logout" style="margin-top:var(--space-xl);color:var(--error);">🚪 Logout</a>
+      </nav>
+    </aside>
+    <div class="admin-main">
+      <!-- Dashboard -->
+      <div class="admin-panel active" id="panel-dashboard">
+        <div class="admin-header">
+          <h2>Dashboard</h2>
+          <span style="color:var(--text-muted);font-size:0.875rem;" id="admin-date"></span>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="label">Members</div><div class="value" id="stat-members">0</div></div>
+          <div class="stat-card"><div class="label">Events</div><div class="value" id="stat-events">0</div></div>
+          <div class="stat-card"><div class="label">Messages</div><div class="value" id="stat-messages">0</div></div>
+          <div class="stat-card"><div class="label">Subscribers</div><div class="value" id="stat-subs">0</div></div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:var(--space-md);">Quick Actions</h3>
+          <div style="display:flex;gap:var(--space-sm);flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" data-panel="members">Add Member</button>
+            <button class="btn btn-secondary btn-sm" data-panel="events">Add Event</button>
+            <button class="btn btn-secondary btn-sm" data-panel="announcements">New Announcement</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Members -->
+      <div class="admin-panel" id="panel-members">
+        <div class="admin-header">
+          <h2>Manage Members</h2>
+          <button class="btn btn-primary btn-sm" id="add-member-btn">+ Add Member</button>
+        </div>
+        <div class="card" style="overflow-x:auto;">
+          <table class="admin-table">
+            <thead><tr><th>Name</th><th>Faculty</th><th>Joined</th><th>Actions</th></tr></thead>
+            <tbody id="members-tbody"></tbody>
+          </table>
+        </div>
+        <div id="member-form-wrap" style="display:none;margin-top:var(--space-xl);" class="card">
+          <h3 style="margin-bottom:var(--space-md);">Add / Edit Member</h3>
+          <form id="member-form">
+            <input type="hidden" id="member-id">
+            <div class="form-group"><label>Name</label><input type="text" id="member-name" required></div>
+            <div class="form-group"><label>Faculty</label><input type="text" id="member-faculty" required></div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-ghost" id="cancel-member">Cancel</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Board -->
+      <div class="admin-panel" id="panel-board">
+        <div class="admin-header"><h2>Board of Directors</h2></div>
+        <div class="card">
+          <p style="color:var(--text-secondary);font-size:0.875rem;">Board members are defined in the site. Edit board.html for structural changes. Current roster is stored for reference.</p>
+          <ul id="board-list" style="margin-top:var(--space-lg);"></ul>
+        </div>
+      </div>
+
+      <!-- Events -->
+      <div class="admin-panel" id="panel-events">
+        <div class="admin-header">
+          <h2>Manage Events</h2>
+          <button class="btn btn-primary btn-sm" id="add-event-btn">+ Add Event</button>
+        </div>
+        <div class="card" style="overflow-x:auto;">
+          <table class="admin-table">
+            <thead><tr><th>Title</th><th>Date</th><th>Category</th><th>Actions</th></tr></thead>
+            <tbody id="events-tbody"></tbody>
+          </table>
+        </div>
+        <div id="event-form-wrap" style="display:none;margin-top:var(--space-xl);" class="card">
+          <h3 style="margin-bottom:var(--space-md);">Add / Edit Event</h3>
+          <form id="event-form">
+            <input type="hidden" id="event-id">
+            <div class="form-group"><label>Title</label><input type="text" id="event-title" required></div>
+            <div class="form-group"><label>Date</label><input type="date" id="event-date" required></div>
+            <div class="form-group"><label>Category</label>
+              <select id="event-category">
+                <option value="upcoming">Upcoming</option>
+                <option value="workshop">Workshop</option>
+                <option value="hackathon">Hackathon</option>
+                <option value="seminar">Seminar</option>
+                <option value="leadership">Leadership</option>
+                <option value="volunteer">Volunteer</option>
+                <option value="past">Past</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Venue</label><input type="text" id="event-venue"></div>
+            <div class="form-group"><label>Description</label><textarea id="event-desc"></textarea></div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-ghost" id="cancel-event">Cancel</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <div class="admin-panel" id="panel-gallery">
+        <div class="admin-header"><h2>Gallery Photos</h2></div>
+        <div class="card">
+          <p style="color:var(--text-secondary);font-size:0.875rem;margin-bottom:var(--space-lg);">Upload is simulated via localStorage. Add image URLs below.</p>
+          <form id="gallery-form" style="display:flex;gap:var(--space-sm);flex-wrap:wrap;margin-bottom:var(--space-lg);">
+            <input type="text" id="gallery-url" placeholder="Image URL or path" style="flex:1;min-width:200px;padding:0.75rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-md);color:var(--text-primary);">
+            <input type="text" id="gallery-caption" placeholder="Caption" style="padding:0.75rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-md);color:var(--text-primary);">
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+          <ul id="gallery-admin-list"></ul>
+        </div>
+      </div>
+
+      <!-- Announcements -->
+      <div class="admin-panel" id="panel-announcements">
+        <div class="admin-header"><h2>Announcements</h2></div>
+        <div class="card">
+          <form id="announce-form">
+            <div class="form-group"><label>Title</label><input type="text" id="announce-title" required></div>
+            <div class="form-group"><label>Body</label><textarea id="announce-body" required></textarea></div>
+            <button type="submit" class="btn btn-primary">Publish</button>
+          </form>
+          <ul id="announce-list" style="margin-top:var(--space-xl);"></ul>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="admin-panel" id="panel-newsletter">
+        <div class="admin-header"><h2>Newsletter Subscribers</h2></div>
+        <div class="card">
+          <ul id="subs-list"></ul>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="admin-panel" id="panel-messages">
+        <div class="admin-header"><h2>Contact Messages</h2></div>
+        <div class="card">
+          <div id="messages-list"></div>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="admin-panel" id="panel-settings">
+        <div class="admin-header"><h2>Settings</h2></div>
+        <div class="card">
+          <div class="form-group">
+            <label>Site Theme Preference</label>
+            <select id="settings-theme">
+              <option value="dark">Dark (Deep Ocean)</option>
+              <option value="light">Light</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="save-settings">Save Settings</button>
+          <hr style="border:none;border-top:1px solid var(--border);margin:var(--space-xl) 0;">
+          <button class="btn btn-danger btn-sm" id="clear-data">Clear All Local Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+    const CREDENTIALS = { user: 'admin', pass: 'prodigy2083' };
+    const loginEl = document.getElementById('admin-login');
+    const shellEl = document.getElementById('admin-shell');
+
+    // Auth check
+    if (sessionStorage.getItem('ps-admin-auth') === '1') {
+      showAdmin();
+    }
+
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const u = document.getElementById('admin-user').value.trim();
+      const p = document.getElementById('admin-pass').value;
+      if (u === CREDENTIALS.user && p === CREDENTIALS.pass) {
+        sessionStorage.setItem('ps-admin-auth', '1');
+        showAdmin();
+      } else {
+        document.getElementById('login-error').classList.add('show');
+      }
+    });
+
+    function showAdmin() {
+      loginEl.style.display = 'none';
+      shellEl.classList.add('active');
+      document.getElementById('admin-date').textContent = new Date().toLocaleDateString('en-NP', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      refreshStats();
+      renderMembers();
+      renderEvents();
+      renderBoard();
+      renderGallery();
+      renderAnnouncements();
+      renderSubs();
+      renderMessages();
+    }
+
+    document.getElementById('admin-logout').addEventListener('click', (e) => {
+      e.preventDefault();
+      sessionStorage.removeItem('ps-admin-auth');
+      location.reload();
+    });
+
+    // Panel nav
+    document.querySelectorAll('.admin-nav a[data-panel], .btn[data-panel]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const panel = el.getAttribute('data-panel');
+        if (!panel) return;
+        document.querySelectorAll('.admin-nav a').forEach((a) => a.classList.remove('active'));
+        document.querySelector(`.admin-nav a[data-panel="${panel}"]`)?.classList.add('active');
+        document.querySelectorAll('.admin-panel').forEach((p) => p.classList.remove('active'));
+        document.getElementById('panel-' + panel)?.classList.add('active');
+      });
+    });
+
+    // LocalStorage helpers
+    function get(key, fallback) {
+      try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch { return fallback; }
+    }
+    function set(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
+
+    function refreshStats() {
+      document.getElementById('stat-members').textContent = get('ps-members', []).length;
+      document.getElementById('stat-events').textContent = get('ps-events', []).length;
+      document.getElementById('stat-messages').textContent = get('ps-messages', []).length;
+      document.getElementById('stat-subs').textContent = get('ps-newsletter', []).length;
+    }
+
+    // Members CRUD
+    function renderMembers() {
+      const list = get('ps-members', [
+        { id: 1, name: 'Sita Gurung', faculty: 'BBA', joined: '2083-01-15' },
+        { id: 2, name: 'Rohit Karki', faculty: 'BSc CSIT', joined: '2083-01-20' }
+      ]);
+      set('ps-members', list);
+      const tbody = document.getElementById('members-tbody');
+      tbody.innerHTML = list.map((m) => `
+        <tr>
+          <td>${m.name}</td>
+          <td>${m.faculty}</td>
+          <td>${m.joined || '—'}</td>
+          <td>
+            <button class="btn btn-ghost btn-sm" data-edit-member="${m.id}">Edit</button>
+            <button class="btn btn-danger btn-sm" data-del-member="${m.id}">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+      tbody.querySelectorAll('[data-del-member]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = +btn.getAttribute('data-del-member');
+          set('ps-members', get('ps-members', []).filter((m) => m.id !== id));
+          renderMembers();
+          refreshStats();
+        });
+      });
+      tbody.querySelectorAll('[data-edit-member]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = +btn.getAttribute('data-edit-member');
+          const m = get('ps-members', []).find((x) => x.id === id);
+          if (!m) return;
+          document.getElementById('member-id').value = m.id;
+          document.getElementById('member-name').value = m.name;
+          document.getElementById('member-faculty').value = m.faculty;
+          document.getElementById('member-form-wrap').style.display = 'block';
+        });
+      });
+    }
+
+    document.getElementById('add-member-btn').addEventListener('click', () => {
+      document.getElementById('member-id').value = '';
+      document.getElementById('member-form').reset();
+      document.getElementById('member-form-wrap').style.display = 'block';
+    });
+    document.getElementById('cancel-member').addEventListener('click', () => {
+      document.getElementById('member-form-wrap').style.display = 'none';
+    });
+    document.getElementById('member-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const list = get('ps-members', []);
+      const id = document.getElementById('member-id').value;
+      const data = {
+        id: id ? +id : Date.now(),
+        name: document.getElementById('member-name').value,
+        faculty: document.getElementById('member-faculty').value,
+        joined: new Date().toISOString().slice(0, 10)
+      };
+      if (id) {
+        const idx = list.findIndex((m) => m.id === +id);
+        if (idx >= 0) list[idx] = { ...list[idx], ...data };
+      } else {
+        list.push(data);
+      }
+      set('ps-members', list);
+      document.getElementById('member-form-wrap').style.display = 'none';
+      renderMembers();
+      refreshStats();
+    });
+
+    // Events CRUD
+    function renderEvents() {
+      const list = get('ps-events', [
+        { id: 1, title: 'Innovation Bootcamp 2026', date: '2026-09-01', category: 'upcoming', venue: 'Auditorium', desc: 'Design thinking intensive.' }
+      ]);
+      set('ps-events', list);
+      const tbody = document.getElementById('events-tbody');
+      tbody.innerHTML = list.map((ev) => `
+        <tr>
+          <td>${ev.title}</td>
+          <td>${ev.date}</td>
+          <td>${ev.category}</td>
+          <td>
+            <button class="btn btn-ghost btn-sm" data-edit-event="${ev.id}">Edit</button>
+            <button class="btn btn-danger btn-sm" data-del-event="${ev.id}">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+      tbody.querySelectorAll('[data-del-event]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          set('ps-events', get('ps-events', []).filter((e) => e.id !== +btn.getAttribute('data-del-event')));
+          renderEvents();
+          refreshStats();
+        });
+      });
+      tbody.querySelectorAll('[data-edit-event]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const ev = get('ps-events', []).find((x) => x.id === +btn.getAttribute('data-edit-event'));
+          if (!ev) return;
+          document.getElementById('event-id').value = ev.id;
+          document.getElementById('event-title').value = ev.title;
+          document.getElementById('event-date').value = ev.date;
+          document.getElementById('event-category').value = ev.category;
+          document.getElementById('event-venue').value = ev.venue || '';
+          document.getElementById('event-desc').value = ev.desc || '';
+          document.getElementById('event-form-wrap').style.display = 'block';
+        });
+      });
+    }
+
+    document.getElementById('add-event-btn').addEventListener('click', () => {
+      document.getElementById('event-id').value = '';
+      document.getElementById('event-form').reset();
+      document.getElementById('event-form-wrap').style.display = 'block';
+    });
+    document.getElementById('cancel-event').addEventListener('click', () => {
+      document.getElementById('event-form-wrap').style.display = 'none';
+    });
+    document.getElementById('event-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const list = get('ps-events', []);
+      const id = document.getElementById('event-id').value;
+      const data = {
+        id: id ? +id : Date.now(),
+        title: document.getElementById('event-title').value,
+        date: document.getElementById('event-date').value,
+        category: document.getElementById('event-category').value,
+        venue: document.getElementById('event-venue').value,
+        desc: document.getElementById('event-desc').value
+      };
+      if (id) {
+        const idx = list.findIndex((e) => e.id === +id);
+        if (idx >= 0) list[idx] = data;
+      } else list.push(data);
+      set('ps-events', list);
+      document.getElementById('event-form-wrap').style.display = 'none';
+      renderEvents();
+      refreshStats();
+    });
+
+    // Board (read-only list)
+    function renderBoard() {
+      const board = [
+        'Ramesh Giri — President',
+        'Hridaya Raghubanshi — Vice President',
+        'Meegin Pun — Chief Secretary',
+        'Aarya Aryal — Junior Secretary',
+        'Raseem Thapa — Co Treasurer',
+        'Praman Udaya — Co Treasurer',
+        'Pramis Tiwari — Sergeant At Arms',
+        'Aryan Bhattarai — IT Head',
+        'Rhythm Ghimire — Media Director'
+      ];
+      document.getElementById('board-list').innerHTML = board.map((b) => `<li style="padding:0.5rem 0;border-bottom:1px solid var(--border);color:var(--text-secondary);">${b}</li>`).join('');
+    }
+
+    // Gallery
+    function renderGallery() {
+      const list = get('ps-gallery', []);
+      document.getElementById('gallery-admin-list').innerHTML = list.map((g, i) => `
+        <li style="display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--text-secondary);font-size:0.875rem;">${g.caption || g.url}</span>
+          <button class="btn btn-danger btn-sm" data-del-gal="${i}">Remove</button>
+        </li>
+      `).join('') || '<li style="color:var(--text-muted);">No photos added yet.</li>';
+      document.querySelectorAll('[data-del-gal]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const list = get('ps-gallery', []);
+          list.splice(+btn.getAttribute('data-del-gal'), 1);
+          set('ps-gallery', list);
+          renderGallery();
+        });
+      });
+    }
+    document.getElementById('gallery-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const list = get('ps-gallery', []);
+      list.push({
+        url: document.getElementById('gallery-url').value,
+        caption: document.getElementById('gallery-caption').value
+      });
+      set('ps-gallery', list);
+      e.target.reset();
+      renderGallery();
+    });
+
+    // Announcements
+    function renderAnnouncements() {
+      const list = get('ps-announcements', []);
+      document.getElementById('announce-list').innerHTML = list.map((a, i) => `
+        <li style="padding:var(--space-md);border:1px solid var(--border);border-radius:var(--radius-md);margin-bottom:var(--space-sm);">
+          <strong>${a.title}</strong>
+          <p style="font-size:0.875rem;color:var(--text-secondary);margin:0.5rem 0;">${a.body}</p>
+          <button class="btn btn-danger btn-sm" data-del-ann="${i}">Delete</button>
+        </li>
+      `).join('') || '<li style="color:var(--text-muted);">No announcements.</li>';
+      document.querySelectorAll('[data-del-ann]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const list = get('ps-announcements', []);
+          list.splice(+btn.getAttribute('data-del-ann'), 1);
+          set('ps-announcements', list);
+          renderAnnouncements();
+        });
+      });
+    }
+    document.getElementById('announce-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const list = get('ps-announcements', []);
+      list.unshift({
+        title: document.getElementById('announce-title').value,
+        body: document.getElementById('announce-body').value,
+        date: new Date().toISOString()
+      });
+      set('ps-announcements', list);
+      e.target.reset();
+      renderAnnouncements();
+    });
+
+    // Newsletter
+    function renderSubs() {
+      const list = get('ps-newsletter', []);
+      document.getElementById('subs-list').innerHTML = list.map((email) =>
+        `<li style="padding:0.5rem 0;border-bottom:1px solid var(--border);color:var(--text-secondary);">${email}</li>`
+      ).join('') || '<li style="color:var(--text-muted);">No subscribers yet.</li>';
+    }
+
+    // Messages
+    function renderMessages() {
+      const list = get('ps-messages', []);
+      document.getElementById('messages-list').innerHTML = list.length ? list.slice().reverse().map((m) => `
+        <div style="padding:var(--space-md);border:1px solid var(--border);border-radius:var(--radius-md);margin-bottom:var(--space-sm);">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
+            <strong>${m.name}</strong>
+            <span style="font-size:0.75rem;color:var(--text-muted);">${new Date(m.date).toLocaleString()}</span>
+          </div>
+          <div style="font-size:0.8125rem;color:var(--accent);">${m.email} · ${m.subject}</div>
+          <p style="font-size:0.875rem;color:var(--text-secondary);margin-top:0.5rem;">${m.message}</p>
+        </div>
+      `).join('') : '<p style="color:var(--text-muted);">No messages yet.</p>';
+    }
+
+    // Settings
+    document.getElementById('save-settings').addEventListener('click', () => {
+      const theme = document.getElementById('settings-theme').value;
+      localStorage.setItem('ps-theme', theme);
+      document.documentElement.setAttribute('data-theme', theme);
+      alert('Settings saved.');
+    });
+    document.getElementById('clear-data').addEventListener('click', () => {
+      if (confirm('Clear all Prodigy Society localStorage data?')) {
+        ['ps-members', 'ps-events', 'ps-gallery', 'ps-announcements', 'ps-newsletter', 'ps-messages'].forEach((k) => localStorage.removeItem(k));
+        location.reload();
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
