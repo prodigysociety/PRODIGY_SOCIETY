@@ -1,0 +1,445 @@
+Ctrl+K
+Ctrl+J
+
+
+
+
+
+
+
+
+
+prodigy-society
+
+index.html
+Files
+Draggable item prodigy-society/css/variables.css was dropped.
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prodigy Society | Tilottama Campus — Innovation & Leadership Club</title>
+  <meta name="description" content="Prodigy Society is a student-led innovation and technology club at Tilottama Campus, Nepal. Leadership, creativity, hackathons, and personal development.">
+  <meta name="keywords" content="Prodigy Society, Tilottama Campus, college club, Nepal, innovation, technology, leadership">
+  <meta name="author" content="Prodigy Society">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Prodigy Society | Tilottama Campus">
+  <meta property="og:description" content="Student-led innovation and technology club dedicated to leadership, creativity, and personal development.">
+  <meta property="og:url" content="https://prodigysociety.ttc.edu.np">
+  <meta property="og:image" content="assets/logo.png">
+  <meta property="og:locale" content="en_US">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prodigy Society | Tilottama Campus">
+  <meta name="twitter:description" content="Student-led innovation and technology club at Tilottama Campus, Nepal.">
+  <meta name="twitter:image" content="assets/logo.png">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Prodigy Society",
+    "url": "https://prodigysociety.ttc.edu.np",
+    "logo": "assets/logo.png",
+    "description": "Student-led innovation and technology club at Tilottama Campus",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tilottama Yogikuti",
+      "addressRegion": "Rupandehi",
+      "addressCountry": "NP"
+    },
+    "email": "drewthecrewttc@gmail.com",
+    "parentOrganization": {
+      "@type": "CollegeOrUniversity",
+      "name": "Tilottama Campus"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div id="progress-bar" role="progressbar" aria-hidden="true"></div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" aria-live="polite">
+    <div class="loader" aria-hidden="true"></div>
+    <p class="loader-text">Loading Prodigy Society…</p>
+  </div>
+
+  <!-- Navigation -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo" aria-label="Prodigy Society Home">
+        <img src="assets/logo.png" alt="Prodigy Society Logo" width="40" height="40">
+        <span>Prodigy Society</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="board.html">Board</a>
+        <a href="members.html">Members</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="board.html">Board</a>
+    <a href="members.html">Members</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero" aria-label="Hero">
+      <canvas id="particle-canvas" aria-hidden="true"></canvas>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Tilottama Campus · Est. 2083
+        </div>
+        <h1>
+          Where Leaders<br>
+          <span class="gradient-text" data-typing='["Innovate","Create","Inspire","Lead"]'></span>
+        </h1>
+        <p class="hero-subtitle">
+          Prodigy Society is a student-led innovation and technology club dedicated to leadership, creativity, public speaking, and personal development at Tilottama Campus.
+        </p>
+        <div class="hero-cta">
+          <a href="about.html" class="btn btn-primary btn-lg">Discover Us</a>
+          <a href="events.html" class="btn btn-secondary btn-lg">Upcoming Events</a>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="scroll-indicator"></div>
+        Scroll
+      </div>
+    </section>
+
+    <!-- Counters -->
+    <section class="section" style="padding-top:0; padding-bottom: var(--space-3xl);">
+      <div class="container">
+        <div class="counters reveal">
+          <div class="counter-card">
+            <div class="counter-value" data-counter="150" data-suffix="+">0</div>
+            <div class="counter-label">Active Members</div>
+          </div>
+          <div class="counter-card">
+            <div class="counter-value" data-counter="40" data-suffix="+">0</div>
+            <div class="counter-label">Events Hosted</div>
+          </div>
+          <div class="counter-card">
+            <div class="counter-value" data-counter="12" data-suffix="+">0</div>
+            <div class="counter-label">Workshops</div>
+          </div>
+          <div class="counter-card">
+            <div class="counter-value" data-counter="8" data-suffix="">0</div>
+            <div class="counter-label">Awards Won</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="section" id="mission">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Our Purpose</span>
+          <h2>Mission &amp; Vision</h2>
+          <p>Empowering students to lead, innovate, and make a lasting impact on campus and beyond.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">🎯</div>
+            <h3>Mission</h3>
+            <p>To cultivate leadership, creativity, and technical excellence among students through hands-on projects, workshops, and community engagement at Tilottama Campus.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">🔭</div>
+            <h3>Vision</h3>
+            <p>To be Nepal’s leading student innovation society—nurturing prodigies who transform ideas into impact and inspire the next generation of changemakers.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">⚡</div>
+            <h3>Values</h3>
+            <p>Integrity, collaboration, continuous learning, and excellence. We believe every student has the potential to be a prodigy with the right environment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Join Us -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Benefits</span>
+          <h2>Why Join Prodigy Society?</h2>
+          <p>More than a club—a launchpad for your future.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">🎤</div>
+            <h3>Public Speaking</h3>
+            <p>Master the art of communication through debates, presentations, and leadership sessions.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">💻</div>
+            <h3>Technology &amp; Design</h3>
+            <p>Hands-on workshops in coding, UI/UX, AI, and digital design with real projects.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">🏆</div>
+            <h3>Hackathons</h3>
+            <p>Compete, build, and win in campus and inter-college hackathons and innovation challenges.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">🤝</div>
+            <h3>Teamwork</h3>
+            <p>Collaborate with peers on impactful projects and build lifelong professional networks.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">🌱</div>
+            <h3>Community Service</h3>
+            <p>Give back through volunteer programs and social initiatives that create real change.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon" aria-hidden="true">📈</div>
+            <h3>Personal Growth</h3>
+            <p>Develop soft skills, confidence, and a growth mindset that employers value.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Events Preview -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">What's Next</span>
+          <h2>Latest Events</h2>
+          <p>Join our upcoming workshops, seminars, and community activities.</p>
+        </div>
+        <div class="event-grid">
+          <article class="event-card reveal" data-category="upcoming">
+            <div class="event-image">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a222c,#4a9a8e33);display:flex;align-items:center;justify-content:center;font-size:3rem;">🚀</div>
+              <span class="event-badge">Upcoming</span>
+            </div>
+            <div class="event-body">
+              <div class="event-date">15 Bhadra 2083 · 10:00 AM</div>
+              <h3>Innovation Bootcamp 2026</h3>
+              <div class="event-venue">📍 Tilottama Campus Auditorium</div>
+              <p class="event-desc">A full-day intensive on design thinking, prototyping, and pitching ideas to industry mentors.</p>
+              <div class="event-countdown" data-countdown="2026-09-01T10:00:00"></div>
+              <a href="events.html" class="btn btn-primary btn-sm">Register</a>
+            </div>
+          </article>
+          <article class="event-card reveal" data-category="workshop">
+            <div class="event-image">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a222c,#72d3c633);display:flex;align-items:center;justify-content:center;font-size:3rem;">💡</div>
+              <span class="event-badge">Workshop</span>
+            </div>
+            <div class="event-body">
+              <div class="event-date">22 Bhadra 2083 · 2:00 PM</div>
+              <h3>Web Development Crash Course</h3>
+              <div class="event-venue">📍 IT Lab, Tilottama Campus</div>
+              <p class="event-desc">Build your first responsive website with HTML, CSS, and JavaScript in a guided hands-on session.</p>
+              <a href="events.html" class="btn btn-secondary btn-sm">Learn More</a>
+            </div>
+          </article>
+          <article class="event-card reveal" data-category="seminar">
+            <div class="event-image">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a222c,#5b9bd533);display:flex;align-items:center;justify-content:center;font-size:3rem;">🎤</div>
+              <span class="event-badge">Seminar</span>
+            </div>
+            <div class="event-body">
+              <div class="event-date">5 Ashwin 2083 · 11:00 AM</div>
+              <h3>Leadership &amp; Public Speaking</h3>
+              <div class="event-venue">📍 Conference Hall</div>
+              <p class="event-desc">Expert-led seminar on confident communication, storytelling, and stage presence.</p>
+              <a href="events.html" class="btn btn-secondary btn-sm">Learn More</a>
+            </div>
+          </article>
+        </div>
+        <div class="text-center mt-2">
+          <a href="events.html" class="btn btn-ghost">View All Events →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Voices</span>
+          <h2>What Members Say</h2>
+        </div>
+        <div class="testimonials-track reveal">
+          <div class="testimonial-card">
+            <p class="testimonial-quote">“Prodigy Society transformed how I approach leadership. The workshops and peer support helped me win my first debate competition.”</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">SG</div>
+              <div>
+                <div class="testimonial-name">Sita Gurung</div>
+                <div class="testimonial-role">Member · BBA</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">“From zero coding knowledge to building full projects—the tech workshops here are practical and inspiring. Best decision I made on campus.”</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">RK</div>
+              <div>
+                <div class="testimonial-name">Rohit Karki</div>
+                <div class="testimonial-role">Member · BSc CSIT</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">“The community service projects taught me the real meaning of teamwork. I’ve made friends for life and grown as a person.”</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">AP</div>
+              <div>
+                <div class="testimonial-name">Anisha Poudel</div>
+                <div class="testimonial-role">Member · BA</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">“Hackathons organized by Prodigy pushed me out of my comfort zone. We shipped a working prototype in 24 hours—unforgettable.”</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">BS</div>
+              <div>
+                <div class="testimonial-name">Bikash Shrestha</div>
+                <div class="testimonial-role">Member · BCA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsors -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Partners</span>
+          <h2>Our Supporters</h2>
+        </div>
+        <div class="sponsors-row reveal">
+          <div class="sponsor-item">Tilottama Campus</div>
+          <div class="sponsor-item">TechNepal</div>
+          <div class="sponsor-item">YouthLead NP</div>
+          <div class="sponsor-item">CodeCraft</div>
+          <div class="sponsor-item">Innovate Lab</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section">
+      <div class="container">
+        <div class="newsletter reveal">
+          <h3>Stay in the Loop</h3>
+          <p>Get event announcements, workshop invites, and club news delivered to your inbox.</p>
+          <form class="newsletter-form" id="newsletter-form" aria-label="Newsletter subscription">
+            <input type="email" placeholder="Your email address" required aria-label="Email address" autocomplete="email">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-banner reveal">
+          <h2>Ready to Become a Prodigy?</h2>
+          <p>Join a community of ambitious students building the future—one idea at a time.</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-primary btn-lg">Get in Touch</a>
+            <a href="about.html" class="btn btn-secondary btn-lg">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-row">
+            <img src="assets/logo.png" alt="" width="36" height="36">
+            Prodigy Society
+          </div>
+          <p>Student-led innovation &amp; technology club at Tilottama Campus, empowering the next generation of leaders.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook" title="Facebook">f</a>
+            <a href="#" aria-label="Instagram" title="Instagram">ig</a>
+            <a href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
+            <a href="#" aria-label="YouTube" title="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <a href="about.html">About</a>
+          <a href="board.html">Board</a>
+          <a href="members.html">Members</a>
+          <a href="events.html">Events</a>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+          <a href="events.html">Workshops</a>
+          <a href="about.html">FAQ</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="mailto:drewthecrewttc@gmail.com">drewthecrewttc@gmail.com</a>
+          <a href="#">Tilottama Yogikuti</a>
+          <a href="#">Rupandehi, Nepal</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2083 Prodigy Society · Tilottama Campus. All rights reserved.</span>
+        <span>Made with passion at Tilottama</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 15l7-7 7 7"/></svg>
+  </button>
+
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+Prodigy Society Premium College Website - Grok
