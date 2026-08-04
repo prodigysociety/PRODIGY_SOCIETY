@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Prodigy Society</title>
+  <meta name="description" content="Contact Prodigy Society at Tilottama Campus, Tilottama Yogikuti, Rupandehi, Nepal.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <div id="loading-screen"><div class="loader"></div><p class="loader-text">Loading…</p></div>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="Logo" width="40" height="40"><span>Prodigy Society</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="board.html">Board</a>
+        <a href="members.html">Members</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a><a href="contact.html" class="active">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="board.html">Board</a>
+    <a href="members.html">Members</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a><a href="contact.html" class="active">Contact</a>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Get in Touch</span>
+        <h1>Contact Us</h1>
+        <p>Have a question, idea, or want to join? We’d love to hear from you.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="reveal">
+            <div class="contact-info-card">
+              <div class="contact-info-item">
+                <div class="contact-icon" aria-hidden="true">📍</div>
+                <div>
+                  <h4>Location</h4>
+                  <p>Tilottama Yogikuti, Rupandehi<br>Nepal</p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-icon" aria-hidden="true">✉</div>
+                <div>
+                  <h4>Email</h4>
+                  <a href="mailto:drewthecrewttc@gmail.com">drewthecrewttc@gmail.com</a>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-icon" aria-hidden="true">📞</div>
+                <div>
+                  <h4>Phone</h4>
+                  <p>+977-XXX-XXXXXXX</p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-icon" aria-hidden="true">🏫</div>
+                <div>
+                  <h4>Campus</h4>
+                  <p>Tilottama Campus<br>Tilottama, Rupandehi</p>
+                </div>
+              </div>
+              <div class="footer-socials" style="margin-top:var(--space-xl);">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Instagram">ig</a>
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="YouTube">▶</a>
+              </div>
+            </div>
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.5!2d83.45!3d27.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDM5JzAwLjAiTiA4M8KwMjcnMDAuMCJF!5e0!3m2!1sen!2snp!4v1700000000000"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Tilottama Yogikuti, Rupandehi, Nepal map">
+              </iframe>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div id="form-success" class="form-success" role="alert">Thank you! Your message has been sent successfully. We’ll get back to you soon.</div>
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+                <span class="error-msg">Please enter your name</span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+                <span class="error-msg">Please enter a valid email</span>
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required placeholder="What’s this about?">
+                <span class="error-msg">Please enter a subject</span>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Tell us more…"></textarea>
+                <span class="error-msg">Please enter your message</span>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="logo-row"><img src="assets/logo.png" alt="" width="36" height="36">Prodigy Society</div><p>Tilottama Campus innovation club.</p></div>
+        <div class="footer-links"><h4>Explore</h4><a href="about.html">About</a><a href="board.html">Board</a><a href="events.html">Events</a></div>
+        <div class="footer-links"><h4>More</h4><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></div>
+        <div class="footer-links"><h4>Contact</h4><a href="mailto:drewthecrewttc@gmail.com">drewthecrewttc@gmail.com</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2083 Prodigy Society</span><span>Tilottama Campus, Nepal</span></div>
+    </div>
+  </footer>
+  <button id="back-to-top" aria-label="Back to top"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 15l7-7 7 7"/></svg></button>
+  <script src="js/main.js"></script>
+</body>
+</html>
